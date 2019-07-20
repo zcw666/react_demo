@@ -55,7 +55,7 @@ class Login extends Component {
     });
     let num = 60;
     const set = setInterval(() => {
-      console.log("获取验证码");
+      console.log("获取验证码1");
       num--;
 
       this.setState({
