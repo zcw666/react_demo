@@ -5,6 +5,7 @@ import "./index.css";
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.register = this.register.bind(this);
     this.state = {
       text: "注册",
       getCodeText: "获取验证码",
@@ -38,12 +39,33 @@ class Login extends Component {
               {this.state.getCodeText}
             </div>
           </div>
-          <div className="register-button" onClick={this.register.bind(this)}>
+          <div className="register-button" onClick={this.register}>
             注册
           </div>
         </div>
       </div>
     );
+  }
+  componentWillMount() {
+    console.log("");
+  }
+  componentDidMount() {
+    console.log("");
+  }
+  shouldComponentUpdate() {
+    console.log("");
+  }
+  componentWillUpdate() {
+    console.log("");
+  }
+  componentDidUpdate() {
+    console.log("");
+  }
+  componentWillReceiveProps() {
+    console.log("componentWillReceiveProps");
+  }
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
   }
   register() {
     const URL =
