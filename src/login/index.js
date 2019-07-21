@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import $axios from "axios";
 import "./index.css";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: "33",
+      text: "注册",
       getCodeText: "获取验证码",
       phoneNumber: "",
       code: ""
@@ -16,7 +17,9 @@ class Login extends Component {
       <div className="login">
         <div className="content">
           <div className="title">知乎</div>
-          <div className="text">{this.state.text}</div>
+          <div className="text">
+            {this.state.text}知乎，发现更多可信赖的解答
+          </div>
           <div className="phone">
             <div className="phone-title">手机号：</div>
             <input
@@ -35,9 +38,32 @@ class Login extends Component {
               {this.state.getCodeText}
             </div>
           </div>
+          <div className="register-button" onClick={this.register.bind(this)}>
+            注册
+          </div>
         </div>
       </div>
     );
+  }
+  register() {
+    const URL =
+      "https://www.easy-mock.com/mock/5d345a29e332a27a496bbe7e/zhihu/regisrer?phoneNumber=" +
+      this.state.phoneNumber +
+      "code=" +
+      this.state.code;
+
+    $axios
+      .post(URL)
+      .then(res => {
+        console.log("then", res);
+        const data = res.data;
+        if (data.code === 1) {
+          alert(data.msg);
+        }
+      })
+      .catch(err => {
+        console.log("catch", err);
+      });
   }
   getPhone(e) {
     this.setState({
