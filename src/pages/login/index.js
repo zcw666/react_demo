@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import $axios from "axios";
 import "./index.css";
 
 class Login extends Component {
@@ -70,26 +69,7 @@ class Login extends Component {
     componentWillUnmount() {
         console.log("componentWillUnmount");
     }
-    register() {
-        const URL =
-            "https://www.easy-mock.com/mock/5d345a29e332a27a496bbe7e/zhihu/regisrer?phoneNumber=" +
-            this.state.phoneNumber +
-            "code=" +
-            this.state.code;
-
-        $axios
-            .post(URL)
-            .then(res => {
-                console.log("then", res);
-                const data = res.data;
-                if (data.code === 1) {
-                    alert(data.msg);
-                }
-            })
-            .catch(err => {
-                console.log("catch", err);
-            });
-    }
+    register() {}
     getPhone(e) {
         this.setState({
             phoneNumber: e.target.value
